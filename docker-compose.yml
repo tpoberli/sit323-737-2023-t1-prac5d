@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  a-server:
+    image: 'toberli/node-web-app'
+    networks:
+      - my-network
+    ports:
+      - "49161:8080"
+  b-server:
+    image: 'toberli/node-web-app'
+    networks:
+      - my-network
+    ports:
+      - "49162:8080"
+
+networks:
+  my-network:
+    driver: bridge
+
+# Add the following line to remove orphaned containers
+  v2.0+:
+    options:
+      --remove-orphans
